@@ -1,5 +1,4 @@
 class LikesController < ApplicationController
-
   def create
     if params[:like][:user_id].to_i == current_user.id
       Like.create(like_params)
@@ -24,5 +23,4 @@ class LikesController < ApplicationController
   def like_params
     params.require(:like).permit(:user_id, :post_id)
   end
-  
 end

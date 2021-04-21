@@ -1,12 +1,13 @@
-# Ruby on Rails [Building With Forms: Reformer].
+# Ruby on Rails [Building With Authentication: Member_only].
 
-> [Second Collaborative project]
+> [Collaborative project]
 
-This is the very second project I would build with Ruby on Rails. These projects gives me a chance to actually build some forms, both using nearly-pure HTML and then graduating to using the helper methods that Rails provides. In this project I learnt the multiple ways to build a form in rails that can send parameters to a controller so that it can build an instance of a model with those parameters.  [Find project specifications here](https://www.theodinproject.com/paths/full-stack-ruby-on-rails/courses/ruby-on-rails/lessons/forms)
+This assignment consists of using the Devise gem to have a first approach at authentication in rails. I was able to build an application that allows users to create posts and the authors of the posts are displayed only if as a User you are logged in. More like  an exclusive clubhouse where your members can write anonymous posts. Inside the clubhouse, members can see who the author of a post is but, outside, they can only see the story and wonder who wrote it..  [Find project specifications here](https://www.theodinproject.com/paths/full-stack-ruby-on-rails/courses/ruby-on-rails/lessons/authentication)
 
 ## Built With
 
 - Ruby
+- [Devise](https://github.com/heartcombo/devise)
 - Ruby on Rails
 - webpack
 - Heroku
@@ -33,7 +34,7 @@ This is the very second project I would build with Ruby on Rails. These projects
 Run the following command into your terminal:
 
 ```console
-git clone https://github.com/errea/forms-reformer-rails-app.git
+git clone https://github.com/errea/member_only-rails_app.git
 
 gem bundle install --without production
 
@@ -66,7 +67,7 @@ run rails db:migrate to migrate files
     └──test
 
 ## Deployment
-1) Git clone this repo and cd the to the `Micro reddit` directory.
+1) Git clone this repo and cd the to the `member_only` directory.
 2) Run `rails server` in command line to open the application server in your browser via http://localhost:3000 or something similar
 3) Run `heroku start`.
 4) heroku run
@@ -86,7 +87,7 @@ run rails db:migrate to migrate files
 
 Contributions, issues and feature requests are welcome!
 
-Feel free to check the [issues page](https://github.com/errea/Micro-Reddit-Rail-App/issues).
+Feel free to check the [issues page](https://github.com/errea/member_only-rails_app/issues).
 
 ## Show your support
 
