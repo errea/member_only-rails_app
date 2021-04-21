@@ -1,9 +1,11 @@
 class PostsController < ApplicationController
-  before_action :set_post, only: %i[ show edit update destroy ]
-
+  before_action :authenticate_user!, only: [:new, :create]
+  before_action :set_post, only: [:show, :edit, :update, :destroy]
+  before_action :require_author!, only: [:edit, :update, :destroy]
+  
   # GET /posts or /posts.json
   def index
-    @posts = Post.all
+    @posts = Post.all.order(created_at: :desc)
   end
 
   # GET /posts/1 or /posts/1.json
@@ -22,6 +24,7 @@ class PostsController < ApplicationController
   # POST /posts or /posts.json
   def create
     @post = Post.new(post_params)
+    @post.author = current_user
 
     respond_to do |format|
       if @post.save
@@ -65,5 +68,12 @@ class PostsController < ApplicationController
     # Only allow a list of trusted parameters through.
     def post_params
       params.require(:post).permit(:title, :body)
+    end
+
+    def require_author!
+      unless current_user.try(:id) == @post.author_id
+        flash[:alert] = 'You are not authorized to edit this post!'
+        redirect_to root_url
+      end
     end
 end
