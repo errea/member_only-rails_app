@@ -1,20 +1,12 @@
 class LikesController < ApplicationController
   def create
-    if params[:like][:user_id].to_i == current_user.id
-      Like.create(like_params)
-    else
-      # do nothing
-    end
+    Like.create(like_params) if params[:like][:user_id].to_i == current_user.id
     redirect_back fallback_location: root_url
   end
 
   def destroy
     like = Like.find(params[:id])
-    if like.user == current_user
-      Like.destroy(params[:id])
-    else
-      # do nothing
-    end
+    Like.destroy(params[:id]) if like.user == current_user
     redirect_back fallback_location: root_url
   end
 
