@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   
   root to: 'posts#index'
 
-  resources :posts
+  resources :posts #only: [:new, :create, :index]
   devise_for :users
   resources :likes, only: [:create, :destroy]
   get 'about', to: 'application#about'

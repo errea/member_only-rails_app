@@ -15,14 +15,14 @@ class Post < ApplicationRecord
   validates :title, :body, presence: true
 
   belongs_to :author,
-             class_name: :User
+            class_name: :User
 
   has_many :likes,
-           dependent: :destroy
+          dependent: :destroy
 
   has_many :user_likes,
-           through: :likes,
-           source: :user
+          through: :likes,
+          source: :user
 
   def history
     history =
